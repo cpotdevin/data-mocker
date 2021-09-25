@@ -18,7 +18,20 @@ function Home() {
   const [mockCount, setMockCount] = useState<number | null>(1);
   const [generatedMockData, setGeneratedMockData] = useState('');
 
-  const onGenerateMockData = () => {
+  const handleLoadExample = () => {
+    setSchema(
+      JSON.stringify(
+        {
+          'click Generate mock data to generate a random first name':
+            'name.firstName',
+        },
+        null,
+        2,
+      ),
+    );
+  };
+
+  const handleGenerateMockData = () => {
     try {
       const parsedSchema = JSON.parse(schema);
 
@@ -85,6 +98,25 @@ function Home() {
       <div className="max-w-screen-lg mx-auto px-4">
         <h1 className="text-5xl font-extrabold my-6">Data Mocker</h1>
 
+        <div className="my-6 flex-initial">
+          <a
+            href="https://www.npmjs.com/package/faker"
+            target="_blank"
+            className="underline p-2 rounded-md text-gray-500 bg-gray-100 shadow-sm outline-none duration-200 hover:text-gray-800 hover:bg-gray-200 focus:ring"
+            rel="noreferrer"
+          >
+            Available Faker.js methods.
+          </a>
+
+          <button
+            className="p-2 ml-4 rounded-md font-semibold text-gray-500 bg-gray-100 shadow-sm outline-none duration-200 hover:text-gray-800 hover:bg-gray-200 focus:ring"
+            type="button"
+            onClick={handleLoadExample}
+          >
+            Load example
+          </button>
+        </div>
+
         <TextEditor value={schema} onChange={(value) => setSchema(value)} />
 
         <div className="flex-initial mb-6">
@@ -98,7 +130,7 @@ function Home() {
             }`}
             type="button"
             disabled={!mockCount}
-            onClick={onGenerateMockData}
+            onClick={handleGenerateMockData}
           >
             Generate mock data
           </button>
