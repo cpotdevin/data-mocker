@@ -95,7 +95,7 @@ function Home() {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="max-w-screen-lg mx-auto px-4">
+      <div className="max-w-screen-lg mx-auto mb-24 px-4">
         <h1 className="text-5xl font-extrabold my-6">Data Mocker</h1>
 
         <div className="my-6 flex-initial">
